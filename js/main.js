@@ -274,3 +274,17 @@ if (productSelect.length) {
         })
     })
 }
+
+let productHome = document.querySelector('.product_home');
+
+if (productHome) {
+    let productSmall = new Swiper('.product_home__sliders .swiper_small', {
+        slidesPerView: 2,
+        spaceBetween: 16,
+    })
+    let productBig = new Swiper('.product_home__sliders .swiper_big', {
+        thumbs: {
+            swiper: productSmall,
+        },
+    })
+}
