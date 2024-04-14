@@ -2268,6 +2268,10 @@ input[type=number]::-webkit-outer-spin-button {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+
+        @include media(992) {
+            flex-direction: column;
+        }
     }
 
     &__left {
@@ -2275,11 +2279,29 @@ input[type=number]::-webkit-outer-spin-button {
         width: 400px;
         flex-shrink: 0;
 
+        @include media(1200) {
+            width: 300px;
+        }
+
+        @include media(992) {
+            order: 2;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding-top: 46px;
+        }
+
         .product_type {
             color: #212121;
             font-size: 14px;
             line-height: 20px;
             margin-bottom: 10px;
+
+            @include media(992) {
+                margin-bottom: 14px;
+            }
 
             span {
                 color: #A6A2A2;
@@ -2294,6 +2316,17 @@ input[type=number]::-webkit-outer-spin-button {
             font-weight: 500;
             line-height: 40px;
             margin-bottom: 24px;
+
+            @include media(992) {
+                font-size: 23.25px;
+                text-align: center;
+
+                br {
+                    display: none;
+                    margin-bottom: 10px;
+                    line-height: 32px;
+                }
+            }
         }
 
         p {
@@ -2304,9 +2337,19 @@ input[type=number]::-webkit-outer-spin-button {
         }
 
         .stars {
-            display: flex;
-            align-items: center;
-            margin-bottom: 6px;
+
+            @include media(992) {
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                gap: 11px;
+            }
+
+            span {
+                display: flex;
+                align-items: center;
+                margin-bottom: 6px;
+            }
 
             svg {
                 path {
@@ -2331,12 +2374,30 @@ input[type=number]::-webkit-outer-spin-button {
     &__sliders {
         width: calc(100% - 800px);
 
+        @include media(1200) {
+            width: calc(100% - 600px);
+        }
+
+        @include media(992) {
+            order: 1;
+            width: 100%;
+        }
+
         .swiper {
             &_big {
                 max-width: 533px;
 
+                @include media(992) {
+                    max-width: 100%;
+                    overflow: visible;
+                }
+
                 .swiper-slide {
                     height: 520px;
+
+                    @include media(992) {
+                        height: 300px;
+                    }
 
                     img {
                         width: 100%;
@@ -2344,11 +2405,36 @@ input[type=number]::-webkit-outer-spin-button {
                         object-fit: contain;
                     }
                 }
+
+                &__pagination {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transform: translateY(24px);
+                    gap: 12px;
+
+                    span {
+                        width: 4px;
+                        height: 4px;
+                        padding: 0;
+                        margin: 0 !important;
+                        opacity: 1;
+                        background: #E3E3E3;
+
+                        &.swiper-pagination-bullet-active {
+                            background: #212121;
+                        }
+                    }
+                }
             }
 
             &_small {
                 max-width: 120px;
                 margin-top: 36px;
+
+                @include media(992) {
+                    display: none;
+                }
 
                 .swiper-slide {
                     height: 64px;
@@ -2374,6 +2460,16 @@ input[type=number]::-webkit-outer-spin-button {
         width: 400px;
         flex-shrink: 0;
         padding-top: 88px;
+
+        @include media(1200) {
+            width: 300px;
+        }
+
+        @include media(992) {
+            width: 100%;
+            order: 3;
+            padding-top: 41px;
+        }
 
         .price {
             color: #212121;
@@ -2497,14 +2593,24 @@ input[type=number]::-webkit-outer-spin-button {
 .character {
     margin-bottom: 96px;
 
+    @include media(992) {
+        margin-bottom: 68px;
+    }
+
     &__container {
-        border: 1px solid #EBEBEB;
-        padding: 57px 105px;
+        @include media(-992) {
+            border: 1px solid #EBEBEB;
+            padding: 57px 105px;
+        }
     }
 
     .tab {
         display: flex;
         align-items: flex-start;
+
+        @include media(992) {
+            flex-direction: column;
+        }
 
         &_head {
             width: 333px;
@@ -2514,6 +2620,19 @@ input[type=number]::-webkit-outer-spin-button {
             display: flex;
             flex-direction: column;
 
+            @include media(992) {
+                flex-direction: row;
+                height: auto;
+                border: 0;
+                width: calc(100% + 32px);
+                margin-left: -16px;
+                overflow-y: scroll;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
             button {
                 padding: 16px 0;
                 text-align: left;
@@ -2521,8 +2640,21 @@ input[type=number]::-webkit-outer-spin-button {
                 font-size: 15.75px;
                 line-height: 24px;
 
+                @include media(992) {
+                    padding: 16px 20px;
+                    line-height: 100%;
+                    border-bottom: 1px solid #EBEBEB;
+                    white-space: nowrap;
+                }
+
                 &.active {
-                    border-right: 1px solid #212121;
+                    @include media(-992) {
+                        border-right: 1px solid #212121;
+                    }
+
+                    @include media(992) {
+                        border-bottom: 1px solid #212121;
+                    }
                 }
             }
         }
@@ -2532,6 +2664,12 @@ input[type=number]::-webkit-outer-spin-button {
         padding-left: 56px;
         max-height: 286px;
         overflow-y: scroll;
+
+        @include media(992) {
+            max-height: 264px;
+            padding-left: 0;
+            margin-top: 20px;
+        }
 
         &::-webkit-scrollbar {
             display: none;
@@ -2560,9 +2698,18 @@ input[type=number]::-webkit-outer-spin-button {
 .product_review {
     margin-bottom: 56px;
 
+    @include media(992) {
+        margin-bottom: 64px;
+    }
+
     &__title {
         text-align: center;
         margin-bottom: 32px;
+
+        @include media(992) {
+            text-align: left;
+            margin-bottom: 16px;
+        }
     }
 
     &__link {
@@ -2576,6 +2723,13 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 13.67px;
         line-height: 24px;
         margin-bottom: 64px;
+
+        @include media(992) {
+            margin-left: 0;
+            transform: translateX(0);
+            width: 100%;
+            margin-bottom: 32px;
+        }
     }
 
     .reviews {
@@ -2589,12 +2743,27 @@ input[type=number]::-webkit-outer-spin-button {
             border-bottom: 1px solid #EBEBEB;
             padding: 33px 0 25px;
 
+            @include media(650) {
+                flex-direction: column;
+                gap: 16px;
+                padding: 24px 0;
+            }
+
             &_left {
                 width: 533px;
                 flex-shrink: 0;
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
+
+                @include media(1200) {
+                    width: 400px;
+                }
+
+                @include media(850) {
+                    width: 300px;
+                    gap: 8px;
+                }
 
                 .name {
                     display: flex;
@@ -2645,6 +2814,10 @@ input[type=number]::-webkit-outer-spin-button {
                 display: flex;
                 flex-direction: column;
                 gap: 23.5px;
+
+                @include media(650) {
+                    gap: 15.5px;
+                }
 
                 .head {
                     display: flex;

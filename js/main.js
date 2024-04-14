@@ -283,6 +283,9 @@ if (productHome) {
         spaceBetween: 16,
     })
     let productBig = new Swiper('.product_home__sliders .swiper_big', {
+        pagination: {
+            el: '.swiper_big__pagination'
+        },
         thumbs: {
             swiper: productSmall,
         },
