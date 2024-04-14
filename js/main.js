@@ -111,16 +111,21 @@ if (menuBtn) {
 let scrollTop = document.querySelector('.scroll_top');
 
 window.addEventListener('scroll', function () {
-    if (this.scrollY > 100) {
-        scrollTop.classList.add('active');
-    } else {
-        scrollTop.classList.remove('active');
+    if (scrollTop) {
+        if (this.scrollY > 100) {
+            scrollTop.classList.add('active');
+        } else {
+            scrollTop.classList.remove('active');
+        }
     }
 })
 
-scrollTop.onclick = () => {
-    window.scrollTo(0, 0);
+if (scrollTop) {
+    scrollTop.onclick = () => {
+        window.scrollTo(0, 0);
+    }
 }
+
 
 const items = document.querySelectorAll('.accordion');
 
@@ -291,3 +296,49 @@ if (productHome) {
         },
     })
 }
+
+let calculate = document.querySelectorAll('.calculate');
+if (calculate.length) {
+    calculate.forEach(el => {
+        let minus = el.querySelectorAll('button')[0];
+        let plus = el.querySelectorAll('button')[1];
+        let val = el.querySelector('span');
+
+        plus.onclick = () => {
+            val.textContent = +val.textContent + 1;
+        }
+
+        minus.onclick = () => {
+            if (+val.textContent > 1) {
+                val.textContent = +val.textContent - 1;
+            }
+        }
+    })
+}
+
+let orderModal = document.querySelector('.order_modal');
+let orderModalOpen = document.querySelectorAll('.order_modal__open');
+
+if (orderModal) {
+    orderModalOpen.forEach(el => {
+        el.onclick = e => {
+            e.preventDefault();
+            orderModal.style.maxHeight = orderModal.style.maxHeight ? null : orderModal.scrollHeight + 'px';
+        }
+    })
+}
+
+document.addEventListener('click', event => {
+    
+    if (orderModalOpen.length) {
+        orderModalOpen.forEach(el => {
+            const isHeaderScrollNav = event.composedPath().includes(orderModal);
+            const isHeaderBar = event.composedPath().includes(el);
+            
+            if (!isHeaderScrollNav && !isHeaderBar) {
+                orderModal.style.maxHeight = null
+            }
+        })
+    }
+
+})
