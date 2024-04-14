@@ -219,3 +219,58 @@ if (catalogOpen) {
         catalogFilter.classList.remove('active');
     }
 }
+
+let tabs = document.querySelectorAll('.tab');
+if (tabs.length) {
+    tabs.forEach(tab => {
+        let tab_btns = tab.querySelectorAll('button');
+        let tab_items = tab.querySelectorAll('.tab_item');
+        tab_btns.forEach((tab_btn, btn_idx) => {
+            tab_btn.onclick = () => {
+                if (!tab_items[btn_idx].classList.contains('active')) {
+                    tab_items.forEach((tab_item, item_idx) => {
+                        if (tab_item.classList.contains('active')) {
+                            tab_item.classList.remove('active');
+                        }
+                    })
+                    tab_items[btn_idx].classList.add('active')
+                }
+                tab_btns.forEach(item => {
+                    item.classList.remove('active')
+                })
+                tab_btn.classList.add('active')
+            }
+        })
+    })
+}
+
+let productSelect = document.querySelectorAll('.product_select');
+
+if (productSelect.length) {
+    productSelect.forEach(el => {
+        let btn = el.querySelector('.product_select__btn')
+        let img = el.querySelector('.product_select__btn .main_img')
+        let val = el.querySelector('.product_select__btn .value')
+        let list = el.querySelectorAll('.product_select__list_item');
+
+        btn.onclick = () => {
+            el.classList.toggle('active');
+        }
+
+        list.forEach(b => {
+            b.onclick = () => {
+                el.classList.remove('active');
+                val.textContent = b.textContent;
+                img.setAttribute('src', b.querySelector('img').getAttribute('src'))
+
+                list.forEach(b2 => {
+                    if (b2 == b) {
+                        b2.classList.add('active');
+                    } else {
+                        b2.classList.remove('active');
+                    }
+                })
+            }
+        })
+    })
+}
